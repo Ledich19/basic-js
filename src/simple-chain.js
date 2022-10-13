@@ -24,7 +24,6 @@ const chainMaker = {
       this.chain = []
       throw Error('You can\'t remove incorrect link!')
     } else {
-
       this.chain.splice(position - 1 ,1)
       return this
     }
@@ -36,17 +35,12 @@ const chainMaker = {
     // remove line with error and write your code here
   },
   finishChain() {
-    const answ = this.chain.join('~~')
+    const answer = this.chain.join('~~')
     this.chain = []
-    return answ
+    return answer
     // remove line with error and write your code here
   }
 };
-
-//console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink(0))
-//console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink('2nd'))
-//console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink(-2))
-//console.log(chainMaker.addLink(1).addLink(2).addLink(3).removeLink(4))
 
 module.exports = {
   chainMaker
