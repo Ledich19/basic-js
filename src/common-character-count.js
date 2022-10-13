@@ -17,8 +17,7 @@ function getCommonCharacterCount(s1, s2) {
   let string2 = s2.split('');
   for (const letter of string1) {
     if (string2.includes(letter)) {
-      const index = string2.indexOf(letter);
-      string2.splice(index, 1);
+      string2.splice(string2.indexOf(letter), 1);
       answer.push(letter);
     }
   }
