@@ -26,7 +26,7 @@ class VigenereCipheringMachine {
 
   encrypt(message, key) {
     if (!message || !key) {
-      throw Error('Incorrect arguments!')
+      throw Error("Incorrect arguments!");
     }
     const arr = [
       "A",
@@ -58,40 +58,31 @@ class VigenereCipheringMachine {
     ];
     const lowerMessage = message.toUpperCase();
     const lowerKey = key.toUpperCase();
-    const messageLength = message.length;
-    let keyForText = "";
     let cipher = "";
-
-    // while (keyForText.length < messageLength) {
-    //   keyForText += lowerKey;
-    // }
     let count = 0;
+    
     for (let i = 0; i < lowerMessage.length; i++) {
       if (count >= key.length) {
         count = 0;
       }
-      let simbol
+      let sing;
       if (/[A-Z]/.test(lowerMessage[i])) {
         const sum = arr.indexOf(lowerMessage[i]) + arr.indexOf(lowerKey[count]);
         const letterIndex = sum < 26 ? sum : sum - 26;
-        simbol = arr[letterIndex];
-        count++
-
+        sing = arr[letterIndex];
+        count++;
       } else {
-        simbol = lowerMessage[i]
+        sing = lowerMessage[i];
       }
-
-      cipher = cipher + simbol;
+      cipher = cipher + sing;
     }
-
-    return this.direction ? cipher : cipher.split('').reverse().join('');
-
+    return this.direction ? cipher : cipher.split("").reverse().join("");
     // remove line with error and write your code here
   }
 
   decrypt(encryptedMessage, key) {
     if (!encryptedMessage || !key) {
-      throw Error('Incorrect arguments!')
+      throw Error("Incorrect arguments!");
     }
     const arr = [
       "A",
@@ -120,42 +111,33 @@ class VigenereCipheringMachine {
       "X",
       "Y",
       "Z",
-    ]
-
+    ];
     const lowerEncryptedMessage = encryptedMessage.toUpperCase();
     const lowerKey = key.toUpperCase();
     let message = "";
     let count = 0;
-
     for (let i = 0; i < lowerEncryptedMessage.length; i++) {
-      let simbol
+      let sing;
       if (count >= key.length) {
         count = 0;
       }
-      
       if (/[A-Z]/.test(lowerEncryptedMessage[i])) {
-        const sum = arr.indexOf(lowerEncryptedMessage[i]) - arr.indexOf(lowerKey[count]);
-
-        const letterIndex = sum < 0 ? 26 + sum : sum ;
-
-        simbol = arr[letterIndex];
-        count++
-
+        const sum =
+          arr.indexOf(lowerEncryptedMessage[i]) - arr.indexOf(lowerKey[count]);
+        const letterIndex = sum < 0 ? 26 + sum : sum;
+        sing = arr[letterIndex];
+        count++;
       } else {
-        simbol = lowerEncryptedMessage[i]
+        sing = lowerEncryptedMessage[i];
       }
-
-      message = message + simbol;
+      message = message + sing;
     }
-
-    return this.direction ? message : message.split('').reverse().join('');
-
+    return this.direction ? message : message.split("").reverse().join("");
     // remove line with error and write your code here
   }
-
 }
 const reverseMachine = new VigenereCipheringMachine(false);
-console.log(reverseMachine.encrypt('attack at dawn!', 'alphonse'));
+console.log(reverseMachine.encrypt("attack at dawn!", "alphonse"));
 module.exports = {
   VigenereCipheringMachine,
 };
