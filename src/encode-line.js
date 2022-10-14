@@ -12,15 +12,15 @@ const { NotImplementedError } = require("../extensions/index.js");
  */
 function encodeLine(str) {
   let count = 1;
-  let simbol = str[0];
+  let sing = str[0];
   let result = "";
 
   for (let i = 1; i <= str.length; i++) {
-    if (simbol === str[i]) {
+    if (sing === str[i]) {
       count++;
     } else {
-      result += (count === 1 ? "" : count) + simbol;
-      simbol = str[i];
+      result += (count === 1 ? "" : count) + sing;
+      sing = str[i];
       count = 1;
     }
   }
