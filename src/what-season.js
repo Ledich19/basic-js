@@ -15,16 +15,14 @@ function getSeason(date) {
   if (!date) {
     return "Unable to determine the time of year!";
   }
-try {
-  const d = date.valueOf();
-} catch (error) {
-  throw Error("Invalid date!")
-}
+  try {
+    date.valueOf();
+  } catch (error) {
+    throw Error("Invalid date!");
+  }
 
-  const d = date.valueOf();
-
-  if (Number.isNaN(d) || typeof date === "number" || !(date instanceof Date)) {
-    throw Error("Invalid date!")
+  if ( !(date instanceof Date)) {
+    throw Error("Invalid date!");
   }
 
   const month = date.getMonth();
@@ -40,7 +38,6 @@ try {
 
   // remove line with error and write your code here
 }
-
 
 module.exports = {
   getSeason,
